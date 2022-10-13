@@ -25,6 +25,7 @@ export class UserService {
       .loadRelationCountAndMap('u.commentsCount', 'u.comments', 'comments')
       .getMany();
     return arr.map((obj) => {
+      delete obj.comments;
       return obj;
     });
   }

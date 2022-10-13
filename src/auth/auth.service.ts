@@ -49,6 +49,7 @@ export class AuthService {
         token: this.genrateJwtToken(userData),
       };
     } catch (error) {
+      console.log(error);
       throw new ForbiddenException(
         'Ошибка при регистрации, такой email уже занят',
       );
