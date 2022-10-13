@@ -5,9 +5,8 @@
 
 export class SearchPostDto {
   title?: string;
-  body?: string;
+  text?: string;
   views?: 'DESC' | 'ASC';
-  tag?: string;
   limit?: number = 0;
   take?: number = 10;
 }

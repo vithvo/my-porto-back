@@ -1,5 +1,5 @@
 import { UserEntity } from './../../user/entities/user.entity';
-import { OutputBlockData } from './../dto/create-post.dto';
+// import { OutputBlockData } from './../dto/create-post.dto';
 import {
   Entity,
   Column,
@@ -14,14 +14,11 @@ export class PostEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ unique: true })
   title: string;
 
-  @Column({ type: 'jsonb' })
-  body: OutputBlockData[];
-
   @Column()
-  description: string;
+  text: string;
 
   @ManyToOne(() => UserEntity, {
     eager: true,

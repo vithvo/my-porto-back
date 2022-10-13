@@ -47,13 +47,11 @@ export class PostService {
   }
 
   create(dto: CreatePostDto, userId: number) {
-    const firstParagraph = dto.body.find((obj) => obj.type === 'paragraph')
-      ?.data.text;
+    // const firstParagraph = dto.text.find((obj) => obj.type === 'paragraph')
+    //   ?.data.text;
     return this.repository.save({
       title: dto.title,
-      body: dto.body,
-      tags: dto.tags,
-      description: firstParagraph || '',
+      text: dto.text,
       user: { id: userId },
     });
   }
@@ -67,20 +65,16 @@ export class PostService {
     if (dto.views) {
       qb.orderBy('views', dto.views);
     }
-    if (dto.body) {
+    if (dto.text) {
       qb.andWhere(`p.body ILIKE :body`);
     }
     if (dto.title) {
       qb.andWhere(`p.title ILIKE :title`);
     }
-    if (dto.tag) {
-      qb.andWhere(`p.tags ILIKE :tag`);
-    }
 
     qb.setParameters({
       title: `%${dto.title}%`,
-      body: `%${dto.body}%`,
-      tag: `%${dto.tag}%`,
+      body: `%${dto.text}%`,
       views: dto.views || 'DESC',
     });
 
@@ -94,13 +88,13 @@ export class PostService {
     if (!find) {
       throw new NotFoundException('Статья не найдна');
     }
-    const firstParagraph = dto.body.find((obj) => obj.type === 'paragraph')
-      ?.data.text;
+    // const firstParagraph = dto.body.find((obj) => obj.type === 'paragraph')
+    //   ?.data.text;
     return this.repository.update(id, {
       title: dto.title,
-      body: dto.body,
-      tags: dto.tags,
-      description: firstParagraph || '',
+      text: dto.text,
+      // tags: dto.tags,
+      // description: firstParagraph || '',
       user: { id: userId },
     });
   }
