@@ -88,13 +88,11 @@ export class PostService {
     if (!find) {
       throw new NotFoundException('Статья не найдна');
     }
-    // const firstParagraph = dto.body.find((obj) => obj.type === 'paragraph')
-    //   ?.data.text;
+
     return this.repository.update(id, {
       title: dto.title,
       text: dto.text,
-      // tags: dto.tags,
-      // description: firstParagraph || '',
+
       user: { id: userId },
     });
   }

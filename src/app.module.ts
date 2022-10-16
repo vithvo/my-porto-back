@@ -1,3 +1,5 @@
+import { AnswerModule } from './answers/answer.module';
+import { AnswerEntity } from './answers/entities/answer.entity';
 import { CommentEntity } from './comment/entities/comment.entity';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -19,14 +21,15 @@ import { AuthModule } from './auth/auth.module';
       username: 'postgres',
       password: 'Loveislive555',
       database: 'postgres',
-      entities: [UserEntity, PostEntity, CommentEntity],
+      entities: [UserEntity, PostEntity, CommentEntity, AnswerEntity],
       synchronize: true,
     }),
     UserModule,
     PostModule,
     CommentModule,
+    AnswerModule,
     AuthModule,
   ],
-  // controllers: [AppController],
+  //  controllers: [AppController],
 })
 export class AppModule {}

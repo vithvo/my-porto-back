@@ -22,6 +22,7 @@ export class PostEntity {
 
   @ManyToOne(() => UserEntity, {
     eager: true,
+    onDelete: 'CASCADE',
   })
   user: UserEntity;
 
