@@ -25,7 +25,7 @@ export function UniqueOnDatabase(
   validationOptions?: ValidationOptions,
 ) {
   validationOptions = {
-    ...{ message: '$value уже существует' },
+    ...{ message: '$value already exists' },
     ...validationOptions,
   };
   return function (object: Object, propertyName: string) {

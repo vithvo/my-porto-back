@@ -1,8 +1,8 @@
 import { IsEmail, Length } from 'class-validator';
 
 export class LoginUserDto {
-  @IsEmail(undefined, { message: 'Почта: Неверная почта' })
+  @IsEmail(undefined, { message: 'Mail: Invalid mail' })
   email: string;
-  @Length(6, undefined, { message: 'Пароль: Минимум символов - 6' })
+  @Length(6, undefined, { message: 'Password: Minimum characters - 6' })
   password?: string;
 }

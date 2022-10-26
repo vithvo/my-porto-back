@@ -18,7 +18,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     const user = await this.userService.findByCond(data);
 
     if (!user) {
-      throw new UnauthorizedException('Нет доступа к этой странице');
+      throw new UnauthorizedException('No access to this page');
     }
 
     return {

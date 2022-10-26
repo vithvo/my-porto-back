@@ -1,3 +1,4 @@
+import { AnswerEntity } from './../../answers/entities/answer.entity';
 import { PostEntity } from './../../post/entities/post.entity';
 import { UserEntity } from './../../user/entities/user.entity';
 import {
@@ -17,6 +18,9 @@ export class CommentEntity {
 
   @Column()
   text: string;
+
+  @Column()
+  answersLength: number;
 
   @JoinColumn({ name: 'userId' })
   @ManyToOne(() => UserEntity, { nullable: false, onDelete: 'CASCADE' })

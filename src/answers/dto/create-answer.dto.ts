@@ -1,4 +1,4 @@
-import { IsNotEmpty } from 'class-validator';
+import { IsNotEmpty, IsOptional } from 'class-validator';
 
 export class CreateAnswerDto {
   @IsNotEmpty()
@@ -6,7 +6,10 @@ export class CreateAnswerDto {
 
   @IsNotEmpty()
   commentId: number;
-	
+
   @IsNotEmpty()
   postId: number;
+
+  @IsOptional()
+  answersLength: object;
 }

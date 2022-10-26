@@ -1,3 +1,4 @@
+import { Length } from 'class-validator';
 import { UserEntity } from '../user/entities/user.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -19,6 +20,7 @@ export class AnswerService {
       post: { id: dto.postId },
       user: { id: userId },
       comment: { id: dto.commentId },
+
     });
     return this.repository.findOne({
       where: { id: answer.id },

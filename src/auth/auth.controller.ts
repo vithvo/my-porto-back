@@ -1,4 +1,4 @@
-import { CreateUserDto } from './../user/dto/create-user.dto';
+import { CreateUserDto, GitHubUserCodeDTO } from './../user/dto/create-user.dto';
 import {
   Controller,
   Post,
@@ -22,5 +22,13 @@ export class AuthController {
   @Post('registr')
   registr(@Body() dto: CreateUserDto) {
     return this.authService.registr(dto);
+  }
+  @Post('registrGitHub')
+  registrGitHub(@Body() dto: GitHubUserCodeDTO) {
+    return this.authService.registrGitHub(dto);
+  }
+  @Post('loginGitHub')
+  loginGitHub(@Body() dto: GitHubUserCodeDTO) {
+    return this.authService.loginGitHub(dto);
   }
 }

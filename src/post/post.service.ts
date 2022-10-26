@@ -66,7 +66,7 @@ export class PostService {
       qb.orderBy('views', dto.views);
     }
     if (dto.text) {
-      qb.andWhere(`p.body ILIKE :body`);
+      qb.andWhere(`p.text ILIKE :text`);
     }
     if (dto.title) {
       qb.andWhere(`p.title ILIKE :title`);
@@ -74,7 +74,7 @@ export class PostService {
 
     qb.setParameters({
       title: `%${dto.title}%`,
-      body: `%${dto.text}%`,
+      text: `%${dto.text}%`,
       views: dto.views || 'DESC',
     });
 
@@ -86,7 +86,7 @@ export class PostService {
   async update(id: number, dto: UpdatePostDto, userId: number) {
     const find = await this.repository.findOneBy({ id });
     if (!find) {
-      throw new NotFoundException('Статья не найдна');
+      throw new NotFoundException('Post not found');
     }
 
     return this.repository.update(id, {
@@ -100,11 +100,11 @@ export class PostService {
   async remove(id: number, userId: number) {
     const find = await this.repository.findOneBy({ id });
     if (!find) {
-      throw new NotFoundException('Статья не найдна');
+      throw new NotFoundException('Post not found');
     }
 
     if (find.user.id !== userId) {
-      throw new ForbiddenException('Нет доступа к этой статье');
+      throw new ForbiddenException('No access to this post');
     }
 
     return this.repository.delete(id);

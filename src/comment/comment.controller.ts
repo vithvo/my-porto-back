@@ -25,7 +25,7 @@ export class CommentController {
   create(@Body() dto: CreateCommentDto, @User() userId: number) {
     return this.commentService.create(dto, userId);
   }
-  
+
   @Get()
   findAll(@Query() query: { postId?: string }) {
     return this.commentService.findAll(+query.postId);

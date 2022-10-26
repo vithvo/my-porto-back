@@ -18,6 +18,7 @@ export class CommentService {
       text: dto.text,
       post: { id: dto.postId },
       user: { id: userId },
+      answersLength: dto.answersLength,
     });
     return this.repository.findOne({
       where: { id: comment.id },
@@ -56,5 +57,4 @@ export class CommentService {
   remove(id: number) {
     return this.repository.delete(id);
   }
-
 }
