@@ -150,7 +150,7 @@ export class AuthService {
       };
     } catch (error) {
       console.log(error);
-      throw new ForbiddenException('Error during login, no such GitHub email');
+      throw new ForbiddenException('Wrong login or password');
     }
   }
 }
